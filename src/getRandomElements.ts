@@ -10,7 +10,21 @@
  * @returns массив случайных неповторяющихся элементов
  */
 function getRandomElements(array: string[], numOfItems: number): string[] {
-    return [];
+    const copiedArray = [...array];
+    const arrayLength = copiedArray.length < numOfItems ? copiedArray.length : numOfItems;
+    const set = new Set<string>();
+    while (set.size !== arrayLength) {
+        const id = getRandomInt(arrayLength);
+        if (!set.has(copiedArray[id])) {
+            set.add(copiedArray[getRandomInt(arrayLength)]);
+            copiedArray.splice(id, 1);
+        }
+    }
+    return [...set];
 }
+
+function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
 
 export default getRandomElements;
