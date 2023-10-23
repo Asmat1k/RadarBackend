@@ -32,6 +32,7 @@ try {
     const jsonData = JSON.parse(data);
     const arrayData: TableData<Item> = jsonData.array;
     const table = new Table(arrayData);
+    table.setNewItem = {game: "CS", year: 2005};
     table.print();
     table.findBySecondParam(2015);
     table.findByFirstParam('GTA');

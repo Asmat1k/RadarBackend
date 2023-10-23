@@ -18,9 +18,10 @@ class Table<T extends Item>  {
         this.data = data;
     }
 
-    // set setNewItem(newItem: T) {
-    //     this.data.push(newItem);
-    // }
+    // any
+    set setNewItem(newItem: any) {
+        this.data.push(newItem);
+    }
 
     getMaxLength(): number {
         let max = -1;
