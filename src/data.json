@@ -1,0 +1,13 @@
+{
+  "array": 
+  [  
+    {
+      "mark": "Nissan",
+      "speed": "90"
+    },
+    {
+      "mark": "Toyota",
+      "speed": "120"
+    }
+  ]
+}

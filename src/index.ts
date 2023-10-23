@@ -1,5 +1,8 @@
+import path from "path";
+const fs = require('fs');
+
 import getRandomElements from "./getRandomElements";
-import Table from "./table";
+import Table, { Item, TableData } from "./table";
 import getArrayOfUniqueValues from "./utils/getArrayOfUniqueValues";
 
 /*
@@ -24,5 +27,14 @@ console.timeEnd("Random");
 
 //********************************************************************* 
 
-const table = new Table();
-table.print();
+try {
+    const data = fs.readFileSync(path.join(__dirname, 'data.json'), {encoding: 'utf8'} );
+    const jsonData = JSON.parse(data);
+    const arrayData: TableData<Item> = jsonData.array;
+    const table = new Table(arrayData);
+    table.print();
+    table.findBySecondParam(2015);
+    table.findByFirstParam('GTA');
+} catch {
+    console.error('Error, file not found!');
+}
